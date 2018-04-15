@@ -21,14 +21,35 @@ public:
         this->message = stringStream.str();
     }
 
-    virtual std::unique_ptr<MessageLevelAbstract> getMessageLevel() = 0;
+    void setCodeTrace(std::string file, std::string function, int fileLine);
+
+    std::string getFile() const {
+        return this->file;
+    }
+
+    std::string getFunction() const {
+        return this->function;
+    }
+
+    int getFileLine() const {
+        return this->fileLine;
+    }
+
+    virtual std::string getMessageType() {
+        return "";
+    };
+
+    virtual unsigned int getMessageLevel() {
+        return 0;
+    };
 
 
 
 protected:
-
     std::string message;
+    std::string file;
+    std::string function;
+    int fileLine;
 };
-
 
 #endif //DYALOG_MESSAGEABSTRACT_H

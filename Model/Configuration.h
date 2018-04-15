@@ -2,7 +2,12 @@
 #define DYALOG_CONFIGURATION_H
 
 class Configuration {
+public:
+    bool isCodeTraceLogged() const;
+    void setCodeTraceLogged(bool codeTraceLogged);
 
+private:
+    bool codeTraceLogged;
 };
 
 

@@ -6,7 +6,8 @@
 class CriticalMessage : public MessageAbstract {
 
 public:
-    std::unique_ptr<MessageLevelAbstract> getMessageLevel();
+    std::string getMessageType() final { return "Critical"; };
+    unsigned int getMessageLevel() final { return 500; };
 };
 
 

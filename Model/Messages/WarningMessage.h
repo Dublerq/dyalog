@@ -6,7 +6,8 @@
 class WarningMessage : public MessageAbstract {
 
 public:
-    std::unique_ptr<MessageLevelAbstract> getMessageLevel();
+    std::string getMessageType() final { return "Warning"; };
+    unsigned int getMessageLevel() final { return 300; };
 };
 
 

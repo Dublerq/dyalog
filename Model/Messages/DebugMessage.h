@@ -6,7 +6,8 @@
 class DebugMessage : public MessageAbstract {
 
 public:
-    std::unique_ptr<MessageLevelAbstract> getMessageLevel();
+    std::string getMessageType() final { return "Debug"; };
+    unsigned int getMessageLevel() final { return 100; };
 };
 
 

@@ -6,8 +6,8 @@
 class ErrorMessage : public MessageAbstract {
 
 public:
-    std::unique_ptr<MessageLevelAbstract> getMessageLevel();
+    std::string getMessageType() final { return "Error"; };
+    unsigned int getMessageLevel() final { return 400; };
 };
-
 
 #endif //DYALOG_ERRORMESSAGE_H
