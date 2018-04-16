@@ -6,6 +6,7 @@
 #include "../Model/MessageAbstract.h"
 #include "../Model/Configuration.h"
 #include "LogHandlerAbstract.h"
+#include "../Helper/MessageFormatterAbstract.h"
 
 class LogWriterAbstract : public LogHandlerAbstract{
 

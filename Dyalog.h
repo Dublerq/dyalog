@@ -13,8 +13,9 @@ public:
 
     void registerLogHandler(std::shared_ptr<LogHandlerAbstract> handler);
 
-    void log(std::shared_ptr<MessageAbstract> message, std::string file = __FILE__, std::string function = __PRETTY_FUNCTION__, int fileLine = __LINE__);
+    void log(std::shared_ptr<MessageAbstract> message, std::string file = __builtin_FILE(), std::string function = __builtin_FUNCTION(), int fileLine = __builtin_LINE());
     void logAdditionalInfo(std::shared_ptr<MessageAbstract> message, std::string file, std::string function, int fileLine);
+    std::shared_ptr<Configuration> getConfig() { return this->config; }
 private:
     std::unique_ptr<LogManager> logManager;
     std::shared_ptr<Configuration> config;

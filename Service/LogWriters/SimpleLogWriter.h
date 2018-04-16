@@ -2,6 +2,7 @@
 #define DYALOG_SIMPLELOGWRITER_H
 
 #include "../LogWriterAbstract.h"
+#include "../../Helper/MessageFormatterAbstract.h"
 
 class SimpleLogWriter : public LogWriterAbstract{
 

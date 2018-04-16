@@ -3,8 +3,10 @@
 
 #include "../MessageFormatterAbstract.h"
 
-class BasicMessageFormatter : MessageFormatterAbstract {
-
+class BasicMessageFormatter : public MessageFormatterAbstract {
+public:
+    BasicMessageFormatter(const std::shared_ptr<Configuration> &config);
+    std::string getFormattedMessage(std::shared_ptr<MessageAbstract> message);
 };
 
 

@@ -1,4 +1,5 @@
 #include "LogHandlerAbstract.h"
+#include <utility>
 
 void LogHandlerAbstract::processMessage(std::shared_ptr <MessageAbstract> message) {
     if (this->canExecute(message)) {
@@ -8,4 +9,8 @@ void LogHandlerAbstract::processMessage(std::shared_ptr <MessageAbstract> messag
 
 bool LogHandlerAbstract::canExecute(std::shared_ptr<MessageAbstract> message) {
     return message->getMessageLevel() >= loggedLevel;
+}
+
+void LogHandlerAbstract::setFormatter(std::shared_ptr<MessageFormatterAbstract> formatter) {
+    this->formatter = std::move(formatter);
 }
