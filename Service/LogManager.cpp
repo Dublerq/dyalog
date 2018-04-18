@@ -5,6 +5,7 @@ LogManager::LogManager(std::shared_ptr<Configuration> config) {
 }
 
 void LogManager::processMessage(std::shared_ptr<MessageAbstract> message) {
+    message->setTime(std::chrono::system_clock::now());
     for (auto handler : this->logHandlers){
         handler->processMessage(message);
     }

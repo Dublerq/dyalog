@@ -4,7 +4,7 @@
 #include <string>
 #include <memory>
 #include <sstream>
-#include "MessageLevelAbstract.h"
+#include <chrono>
 
 class MessageAbstract {
 
@@ -35,6 +35,14 @@ public:
         return this->fileLine;
     }
 
+    void setTime(std::chrono::time_point<std::chrono::system_clock> timePoint) {
+        this->time = timePoint;
+    }
+
+    std::chrono::time_point<std::chrono::system_clock> getTime() const {
+        return this->time;
+    }
+
     virtual std::string getMessageType() {
         return "";
     };
@@ -49,6 +57,7 @@ protected:
     std::string message;
     std::string file;
     std::string function;
+    std::chrono::time_point<std::chrono::system_clock> time;
     int fileLine;
 };
 

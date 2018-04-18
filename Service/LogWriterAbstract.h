@@ -11,7 +11,7 @@
 class LogWriterAbstract : public LogHandlerAbstract{
 
 public:
-    void execute(std::shared_ptr<MessageAbstract> message);
+    virtual void execute(std::shared_ptr<MessageAbstract> message);
 
 protected:
     virtual void logMessage(std::shared_ptr<MessageAbstract> shared_ptr) = 0;

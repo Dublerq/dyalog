@@ -7,11 +7,13 @@ SimpleLogWriter::SimpleLogWriter(std::string filePath) {
 
 void SimpleLogWriter::logMessage(std::shared_ptr<MessageAbstract> message) {
     std::string finalMessage = "";
+
     if (this->formatter != NULL){
         finalMessage = this->formatter->getFormattedMessage(message);
     } else {
         finalMessage = message->getMessage();
     }
+
     this->writeMessage(finalMessage);
 }
 

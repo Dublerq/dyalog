@@ -13,6 +13,7 @@ public:
         this->config = config;
     }
     void setFormatter(std::shared_ptr<MessageFormatterAbstract> formatter);
+    virtual void initHandler() {};
 
 protected:
     virtual bool canExecute(std::shared_ptr<MessageAbstract> message);

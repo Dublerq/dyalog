@@ -4,13 +4,11 @@
 #include <memory>
 #include "LogHandlerAbstract.h"
 #include "../Model/MessageAbstract.h"
-#include "../Model/Configuration.h"
 
 class LogSenderAbstract : public LogHandlerAbstract {
 
 public:
     void execute(std::shared_ptr<MessageAbstract> message);
-    void applyConfiguration(std::shared_ptr<Configuration> config);
 
 protected:
     virtual void sendMessage(std::shared_ptr<MessageAbstract> shared_ptr) = 0;

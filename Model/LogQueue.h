@@ -9,7 +9,7 @@ class LogQueue {
 public:
     void pushMessage(std::shared_ptr<MessageAbstract> message);
     std::shared_ptr<MessageAbstract> popMessage();
-    unsigned long size();
+    unsigned long size() { return this->messages.size(); };
 
 private:
     std::list<std::shared_ptr<MessageAbstract>> messages;

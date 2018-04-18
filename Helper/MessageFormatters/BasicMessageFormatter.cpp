@@ -9,7 +9,7 @@ BasicMessageFormatter::BasicMessageFormatter(const std::shared_ptr<Configuration
 std::string BasicMessageFormatter::getFormattedMessage(std::shared_ptr<MessageAbstract> message) {
     std::string finalMessage = "";
 
-    std::string datetime = date::format("%F %T", std::chrono::system_clock::now());
+    std::string datetime = date::format("%F %T", message->getTime());
 
     finalMessage += "[" + datetime + "] ";
     finalMessage += message->getMessageType() + ": ";

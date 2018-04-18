@@ -20,6 +20,7 @@ public:
         std::shared_ptr<Formatter> formatterInstance (new Formatter(this->config));
         handler->setFormatter(formatterInstance);
         handler->setConfiguration(this->config);
+        handler->initHandler();
         this->logHandlers.push_back(handler);
     }
 
