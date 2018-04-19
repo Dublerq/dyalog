@@ -7,7 +7,7 @@
 #include "Model/Configuration.h"
 
 /**
- * Yet another logger library
+ * @brief Decent Yet Another LOGger library
  */
 class Dyalog {
 
