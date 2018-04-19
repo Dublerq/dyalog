@@ -9,13 +9,11 @@
 
 class SimpleTCPLogSender : public LogSenderAbstract {
 public:
-    SimpleTCPLogSender(std::string serverHost, unsigned short serverPort, unsigned int loggedLevel = 0);
+    SimpleTCPLogSender(std::string serverHost, unsigned short serverPort, unsigned int loggedLevelFrom = 0, unsigned int loggedLevelTo = 9999);
     void initHandler();
     void sendMessage(std::shared_ptr<MessageAbstract> message);
 
 private:
-    std::string getFormattedMessage(std::shared_ptr<MessageAbstract> message);
-
     boost::asio::io_service ios;
     boost::asio::ip::tcp::endpoint endpoint;
     std::string serverHost;

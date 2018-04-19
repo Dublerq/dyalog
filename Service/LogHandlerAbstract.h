@@ -8,7 +8,7 @@
 
 class LogHandlerAbstract {
 public:
-    LogHandlerAbstract(unsigned int loggedLevel);
+    LogHandlerAbstract(unsigned int loggedLevelFrom, unsigned int loggedLevelTo);
     virtual void processMessage(std::shared_ptr<MessageAbstract> message);
     void setConfiguration(std::shared_ptr<Configuration> config) {
         this->config = config;
@@ -19,10 +19,12 @@ public:
 protected:
     virtual bool canExecute(std::shared_ptr<MessageAbstract> message);
     virtual void execute(std::shared_ptr<MessageAbstract> message) = 0;
+    std::string getFinalMessage(std::shared_ptr<MessageAbstract> message);
 
     std::shared_ptr<Configuration> config;
     std::shared_ptr<MessageFormatterAbstract> formatter;
-    unsigned int loggedLevel = 0;
+    unsigned int loggedLevelFrom = 0;
+    unsigned int loggedLevelTo = 9999;
 };
 
 

@@ -1,20 +1,12 @@
 #include <fstream>
 #include "SimpleLogWriter.h"
 
-SimpleLogWriter::SimpleLogWriter(std::string filePath, unsigned int loggedLevel) : LogWriterAbstract(loggedLevel) {
+SimpleLogWriter::SimpleLogWriter(std::string filePath, unsigned int loggedLevelFrom, unsigned int loggedLevelTo) : LogWriterAbstract(loggedLevelFrom, loggedLevelTo) {
     this->filePath = filePath;
 }
 
 void SimpleLogWriter::logMessage(std::shared_ptr<MessageAbstract> message) {
-    std::string finalMessage = "";
-
-    if (this->formatter != NULL){
-        finalMessage = this->formatter->getFormattedMessage(message);
-    } else {
-        finalMessage = message->getMessage();
-    }
-
-    this->writeMessage(finalMessage);
+    this->writeMessage(this->getFinalMessage(message));
 }
 
 void SimpleLogWriter::writeMessage(std::string message) {

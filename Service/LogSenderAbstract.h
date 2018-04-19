@@ -8,7 +8,7 @@
 class LogSenderAbstract : public LogHandlerAbstract {
 
 public:
-    LogSenderAbstract(unsigned int loggedLevel);
+    LogSenderAbstract(unsigned int loggedLevelFrom, unsigned int loggedLevelTo);
 
     void execute(std::shared_ptr<MessageAbstract> message);
 

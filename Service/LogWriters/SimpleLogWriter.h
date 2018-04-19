@@ -7,7 +7,7 @@
 class SimpleLogWriter : public LogWriterAbstract{
 
 public:
-    SimpleLogWriter(std::string filePath, unsigned int loggedLevel = 0);
+    SimpleLogWriter(std::string filePath, unsigned int loggedLevelFrom = 0, unsigned int loggedLevelTo = 9999);
 
 protected:
     void logMessage(std::shared_ptr<MessageAbstract> shared_ptr);

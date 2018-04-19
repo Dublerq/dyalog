@@ -3,8 +3,8 @@
 #include <utility>
 #include "AsyncSimpleLogWriter.h"
 
-AsyncSimpleLogWriter::AsyncSimpleLogWriter(std::string filePath, unsigned int awaitPeriod, unsigned int loggedLevel)
-        : LogWriterAbstract(loggedLevel)
+AsyncSimpleLogWriter::AsyncSimpleLogWriter(std::string filePath, unsigned int awaitPeriod, unsigned int loggedLevelFrom, unsigned int loggedLevelTo)
+        : LogWriterAbstract(loggedLevelFrom, loggedLevelTo)
 {
     this->filePath = std::move(filePath);
     this->queue = std::unique_ptr<LogQueue>(new LogQueue());
@@ -16,15 +16,7 @@ void AsyncSimpleLogWriter::logMessage(std::shared_ptr<MessageAbstract> message) 
 }
 
 void AsyncSimpleLogWriter::logMessageAsync(std::shared_ptr<MessageAbstract> message, std::ofstream &ofs) {
-    std::string finalMessage;
-
-    if (this->formatter != nullptr){
-        finalMessage = this->formatter->getFormattedMessage(message);
-    } else {
-        finalMessage = message->getMessage();
-    }
-
-    this->writeMessageAsync(finalMessage, ofs);
+    this->writeMessageAsync(this->getFinalMessage(message), ofs);
 }
 
 void AsyncSimpleLogWriter::initHandler() {

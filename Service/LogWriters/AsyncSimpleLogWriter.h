@@ -8,7 +8,7 @@
 class AsyncSimpleLogWriter : public LogWriterAbstract{
 
 public:
-    AsyncSimpleLogWriter(std::string filePath, unsigned int awaitPeriod = 1000, unsigned int loggedLevel = 0);
+    AsyncSimpleLogWriter(std::string filePath, unsigned int awaitPeriod = 1000, unsigned int loggedLevelFrom = 0, unsigned int loggedLevelTo = 9999);
     void initHandler();
 
 protected:
