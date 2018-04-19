@@ -16,7 +16,7 @@ public:
     virtual void execute(std::shared_ptr<MessageAbstract> message);
 
 protected:
-    virtual void logMessage(std::shared_ptr<MessageAbstract> shared_ptr) = 0;
+    virtual void logMessage(std::shared_ptr<MessageAbstract> message) = 0;
 
     unsigned int loggedLevel = 0;
 };
