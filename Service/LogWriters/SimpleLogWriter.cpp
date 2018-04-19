@@ -1,7 +1,7 @@
 #include <fstream>
 #include "SimpleLogWriter.h"
 
-SimpleLogWriter::SimpleLogWriter(std::string filePath) {
+SimpleLogWriter::SimpleLogWriter(std::string filePath, unsigned int loggedLevel) : LogWriterAbstract(loggedLevel) {
     this->filePath = filePath;
 }
 

@@ -8,6 +8,7 @@
 
 class LogHandlerAbstract {
 public:
+    LogHandlerAbstract(unsigned int loggedLevel);
     virtual void processMessage(std::shared_ptr<MessageAbstract> message);
     void setConfiguration(std::shared_ptr<Configuration> config) {
         this->config = config;

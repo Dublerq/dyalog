@@ -11,6 +11,8 @@
 class LogWriterAbstract : public LogHandlerAbstract{
 
 public:
+    LogWriterAbstract(unsigned int loggedLevel);
+
     virtual void execute(std::shared_ptr<MessageAbstract> message);
 
 protected:

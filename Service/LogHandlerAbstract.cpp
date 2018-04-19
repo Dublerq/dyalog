@@ -1,6 +1,10 @@
 #include "LogHandlerAbstract.h"
 #include <utility>
 
+LogHandlerAbstract::LogHandlerAbstract(unsigned int loggedLevel) : loggedLevel(loggedLevel) {
+
+}
+
 void LogHandlerAbstract::processMessage(std::shared_ptr <MessageAbstract> message) {
     if (this->canExecute(message)) {
         this->execute(message);

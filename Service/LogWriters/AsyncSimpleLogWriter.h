@@ -8,7 +8,7 @@
 class AsyncSimpleLogWriter : public LogWriterAbstract{
 
 public:
-    AsyncSimpleLogWriter(std::string filePath);
+    AsyncSimpleLogWriter(std::string filePath, unsigned int awaitPeriod = 1000, unsigned int loggedLevel = 0);
     void initHandler();
 
 protected:
@@ -22,6 +22,7 @@ private:
     std::string filePath;
     std::unique_ptr<LogQueue> queue;
     bool workerRunning = true;
+    unsigned int awaitPeriod;
 };
 
 

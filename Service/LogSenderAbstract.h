@@ -8,10 +8,12 @@
 class LogSenderAbstract : public LogHandlerAbstract {
 
 public:
+    LogSenderAbstract(unsigned int loggedLevel);
+
     void execute(std::shared_ptr<MessageAbstract> message);
 
 protected:
-    virtual void sendMessage(std::shared_ptr<MessageAbstract> shared_ptr) = 0;
+    virtual void sendMessage(std::shared_ptr<MessageAbstract> message) = 0;
     std::shared_ptr<Configuration> config;
 };
 
