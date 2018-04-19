@@ -13,9 +13,14 @@ class LogWriterAbstract : public LogHandlerAbstract{
 public:
     LogWriterAbstract(unsigned int loggedLevelFrom, unsigned int loggedLevelTo);
 
+protected:
+    /// @inherit
     virtual void execute(std::shared_ptr<MessageAbstract> message);
 
-protected:
+    /**
+     * @brief Process message and save to file
+     * @param message
+     */
     virtual void logMessage(std::shared_ptr<MessageAbstract> message) = 0;
 
     unsigned int loggedLevel = 0;

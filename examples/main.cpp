@@ -12,9 +12,12 @@
 #define TARGET_SERVER_IP "127.0.0.1"
 #define TARGET_SERVER_PORT 6000
 
+/**
+ * @brief Test method that creates a single Dyalog instance and logs predefined message into test.txt
+ */
 void testSyncWriting(){
     //init dyalog lib
-    std::shared_ptr<Dyalog> logger(new Dyalog());
+    std::unique_ptr<Dyalog> logger(new Dyalog());
 
     //setup dyalog configs
     logger->getConfig()->setCodeTraceLogged(true);
@@ -29,9 +32,12 @@ void testSyncWriting(){
     logger->log(message);
 }
 
+/**
+ * @brief Test method that creates a single Dyalog instance and sends predefined log message to predefined server via TCP
+ */
 void testTCPSending(){
     //init dyalog lib
-    std::shared_ptr<Dyalog> logger(new Dyalog());
+    std::unique_ptr<Dyalog> logger(new Dyalog());
 
     //setup dyalog configs
     logger->getConfig()->setCodeTraceLogged(true);
@@ -46,9 +52,13 @@ void testTCPSending(){
     logger->log(message);
 }
 
+/**
+ * @brief Test method that creates a single Dyalog instance and logs predefined message into test.txt queuing the message and
+ * saving asynchronously later
+ */
 void testAsyncWriting(){
     //init dyalog lib
-    std::shared_ptr<Dyalog> logger(new Dyalog());
+    std::unique_ptr<Dyalog> logger(new Dyalog());
 
     //setup dyalog configs
     logger->getConfig()->setCodeTraceLogged(true);
@@ -74,6 +84,10 @@ void testAsyncWriting(){
     std::this_thread::sleep_for(std::chrono::milliseconds(15000));
 }
 
+/**
+ * Main application function
+ * @return application return code
+ */
 int main() {
     testTCPSending();
     testSyncWriting();

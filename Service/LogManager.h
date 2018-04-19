@@ -9,12 +9,25 @@
 #include "LogHandlerAbstract.h"
 #include "../Helper/MessageFormatters/BasicMessageFormatter.h"
 
+/**
+ * Log handlers registry and dispatcher
+ */
 class LogManager {
 
 public:
     LogManager(std::shared_ptr<Configuration> config);
+
+    /**
+     * @brief Handle message logging by dispatching in registered handlers.
+     * @param message
+     */
     void processMessage(std::shared_ptr<MessageAbstract> message);
 
+    /**
+     * @brief Register log handler for log processing
+     * @tparam Formatter instance derived from MessageFormatterAbstract
+     * @param handler
+     */
     template <class Formatter = BasicMessageFormatter>
     void registerLogHandler(std::shared_ptr<LogHandlerAbstract> handler) {
         std::shared_ptr<Formatter> formatterInstance (new Formatter(this->config));
@@ -24,6 +37,10 @@ public:
         this->logHandlers.push_back(handler);
     }
 
+    /**
+     * @brief Get all registered log handlers
+     * @return log handlers
+     */
     std::list<std::shared_ptr<LogHandlerAbstract>> getLogHandlers();
 
 private:

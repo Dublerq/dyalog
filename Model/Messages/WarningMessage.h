@@ -3,10 +3,15 @@
 
 #include "../MessageAbstract.h"
 
+/**
+ * @inherit
+ */
 class WarningMessage : public MessageAbstract {
 
 public:
-    std::string getMessageType() final { return "Warning"; };
+    /// @inherit
+    std::string getMessageType() final { return "Warning"; }
+    /// @inherit
     unsigned int getMessageLevel() final { return 300; };
 };
 
